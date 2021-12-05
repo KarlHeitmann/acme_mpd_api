@@ -6,6 +6,7 @@ def read_root(mpc)
   puts
   puts lineas.length
   if lineas.length == 1
+    volume, repeat, random, single, consume = lineas[0].split("  ").map { |elem| elem.split(":")[1].strip() }
     return {
       status: "stopped",
       artist: "no artist",
@@ -15,11 +16,11 @@ def read_root(mpc)
       current_time: "00:00",
       total_time: "00:00",
       percentage: 0,
-      volume: "",
-      repeat: "",
-      random: "",
-      single: "",
-      consume: "",
+      volume: volume,
+      repeat: repeat,
+      random: random,
+      single: single,
+      consume: consume,
     }
   else
 =begin

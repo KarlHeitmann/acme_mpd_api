@@ -2,6 +2,7 @@ require 'sinatra'
 require 'sinatra/reloader'
 require 'byebug'
 require_relative 'lib/root'
+require_relative 'lib/toggle'
 
 set :bind, '0.0.0.0'
 
@@ -9,6 +10,7 @@ get '/' do
   mpc = IO.popen(['mpc']).read
   data_mpc = read_root mpc
   content_type :json
+  puts data_mpc
   return data_mpc.to_json
 end
 
@@ -58,7 +60,9 @@ get '/toggle' do
   puts ls
   puts ls.class
   print ls
-  return ls
+  parsed_toggle = parse_toggle(ls)
+  content_type :json
+  return parsed_toggle
 end
 
 
