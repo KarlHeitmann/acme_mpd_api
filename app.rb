@@ -3,6 +3,7 @@ require 'sinatra/reloader'
 require 'byebug'
 require_relative 'lib/root'
 require_relative 'lib/toggle'
+require_relative 'lib/playlist'
 
 set :bind, '0.0.0.0'
 
@@ -35,7 +36,9 @@ get '/playlist' do
   puts "::::::::::::::"
   puts playlist
   puts "::::::::::::::"
-  return playlist
+  data_playlist = read_playlist(playlist)
+  content_type :json
+  return data_playlist.to_json
 end
 
 get '/queued' do
@@ -62,7 +65,7 @@ get '/toggle' do
   print ls
   parsed_toggle = parse_toggle(ls)
   content_type :json
-  return parsed_toggle
+  return parsed_toggle.to_json
 end
 
 
