@@ -121,7 +121,19 @@ y ver cómo hacer para que la aplicación en Sinatra la use para comunicarse
 directamente con mpd, sin tener que pasar por un intermediario como mpc. ¿Cómo
 se hace? ¿Es viable?
 
+# Homenaje
 
+Al profesor Viktor Slüsarenko del departamento de física de la UTFSM, el Profesor
+solía bautizar los proyectos de participación voluntaria como "Proyecto ACME".
+
+![slusa](https://user-images.githubusercontent.com/3003032/145646044-b7d6de97-ad27-4f3b-8508-c881e1cfa740.jpg)
+
+Siempre lo recordaré por su sentido del humor y su intención de explicar las cosas con
+ejemplos y analogías sencillas
+
+![DSC01349](https://user-images.githubusercontent.com/3003032/145646816-b8630915-357c-4c6d-b6dc-3a1891b58997.jpeg)
+
+Descansa en paz, Maestro.
 
 
 
