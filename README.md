@@ -1,4 +1,4 @@
-# Visión General
+# Visión General.
 
 Este proyecto ACME es para entretenerse y practicar el lenguaje ruby en algo que
 se puede aplicar en la vida real.
@@ -13,6 +13,24 @@ ACME MPD API es una simple aplicación construida en Sinatra porque Sinatra es
 simple, y esta aplicación no debe requerir de una base de datos para funcionar.
 Ahora si alguien quiere usar Rails, podría usarlo creando un proyecto con el
 flag `--api`, pero sería como matar una mosca con un tanque.
+
+# Instalación y configuración.
+
+¡PRUÉBELO! Este proyecto es de los que tiene que copiar e intrusear. Cualquier pregunta
+será bienvenida en la pestaña de issues. MPD y MPC que son las dependencias del
+proyecto se describen un poco más abajo.
+
+Instale MPD y MPC en su sistema operativo. Luego ejecute el comando
+
+> git clone https://github.com/KarlHeitmann/acme_mpd_api
+
+Luego instale las dependencias ingresando a la carpeta del proyecto
+
+> bundle install
+
+Y corra el comando para ejecutar la aplicación:
+
+> ruby app.rb
 
 # ¿Qué es MPD?
 
