@@ -4,6 +4,7 @@ require 'byebug'
 require_relative 'lib/root'
 require_relative 'lib/toggle'
 require_relative 'lib/playlist'
+require_relative 'lib/add'
 
 set :bind, '0.0.0.0'
 
@@ -50,10 +51,26 @@ get '/queued' do
 end
 
 get '/ls' do
-  ls = IO.popen(['mpc', 'ls']).read
+  folder = params[:folder]
+  puts ":::::::::::::::::::"
+  puts ":::::::::::::::::::"
+  puts ":::::::::::::::::::"
+  puts folder.class
+  puts folder
+  puts ":::::::::::::::::::"
+  # ls = IO.popen(['mpc', folder.nil? ? 'ls' : "ls #{folder}"]).read
+  if folder.nil?
+    ls = IO.popen(['mpc', 'ls']).read
+  else
+    ls = IO.popen(['mpc', "ls", folder]).read
+  end
   puts ls
   puts ls.class
   print ls
+  res = ls.split("\n").to_json
+  puts "=============="
+  puts "=============="
+  puts res
   content_type :json
   return ls.split("\n").to_json
 end
@@ -66,6 +83,17 @@ get '/toggle' do
   parsed_toggle = parse_toggle(ls)
   content_type :json
   return parsed_toggle.to_json
+end
+
+get '/add' do
+  file = params[:file]
+  res = IO.popen(['mpc', 'add', file]).read
+  puts res
+  puts res.class
+  print res
+  parsed_res = parse_add(res)
+  content_type :json
+  return parsed_res.to_json
 end
 
 
