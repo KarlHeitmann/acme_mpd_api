@@ -5,6 +5,8 @@ require_relative 'lib/root'
 require_relative 'lib/toggle'
 require_relative 'lib/playlist'
 require_relative 'lib/add'
+require_relative 'lib/prev'
+require_relative 'lib/next'
 
 set :bind, '0.0.0.0'
 
@@ -21,7 +23,12 @@ get '/prev' do
   puts "::::::::::::::"
   puts prev_r
   puts "::::::::::::::"
-  return prev_r
+  parsed_prev = parse_prev(prev_r)
+  puts "11111111111111111111111111111111111111111"
+  puts parsed_prev
+  puts "00000000000000000000000000000000000000000"
+  content_type :json
+  return parsed_prev.to_json
 end
 
 get '/next' do
@@ -29,7 +36,9 @@ get '/next' do
   puts "::::::::::::::"
   puts next_r
   puts "::::::::::::::"
-  return next_r
+  parsed_next = parse_next(next_r)
+  content_type :json
+  return parsed_next.to_json
 end
 
 get '/playlist' do

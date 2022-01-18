@@ -1,6 +1,13 @@
 require 'sinatra/reloader'
 
 def parse_status(mpc_data)
+  puts "!!!!!!!!!!!!!!!!!!!!"
+  puts "!!!!!!!!!!!!!!!!!!!!"
+  puts "!!!!!!!!!!!!!!!!!!!!"
+  puts "!!!!!!!!!!!!!!!!!!!!"
+  puts "!!!!!!!!!!!!!!!!!!!!"
+  puts "!!!!!!!!!!!!!!!!!!!!"
+  puts "!!!!!!!!!!!!!!!!!!!!"
 =begin
 The Cranberries - Promises
 [paused]  #2/4   1:13/5:27 (22%)
