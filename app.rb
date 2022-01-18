@@ -41,6 +41,20 @@ get '/next' do
   return parsed_next.to_json
 end
 
+get '/play' do
+  index = params[:index]
+  index_r = IO.popen(['mpc', 'play', index]).read
+  content_type :json
+  return {status: "OK"}.to_json
+end
+
+get '/del' do
+  index = params[:index]
+  index_r = IO.popen(['mpc', 'del', index]).read
+  content_type :json
+  return {status: "OK"}.to_json
+end
+
 get '/playlist' do
   playlist = IO.popen(['mpc', 'playlist']).read
   puts "::::::::::::::"
