@@ -11,7 +11,15 @@ require_relative 'lib/next'
 set :bind, '0.0.0.0'
 
 get '/' do
-  mpc = IO.popen(['mpc']).read
+  # mpc = IO.popen(['mpc']).read
+  mpc_p = IO.popen(['mpc'])
+  puts mpc_p.class
+  puts mpc_p
+  mpc = mpc_p.read
+  puts ":::::::::::::::"
+  puts "::: WAITING :::"
+  Process.wait(mpc_p.pid)
+
   data_mpc = read_root mpc
   content_type :json
   puts data_mpc
