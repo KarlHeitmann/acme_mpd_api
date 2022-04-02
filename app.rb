@@ -27,7 +27,9 @@ get '/' do
 end
 
 get '/prev' do
-  prev_r = IO.popen(['mpc', 'prev']).read
+  prev_r_p = IO.popen(['mpc', 'prev'])
+  prev_r = prev_r_p.read
+  Process.wait(prev_r_p.pid)
   puts "::::::::::::::"
   puts prev_r
   puts "::::::::::::::"
@@ -40,7 +42,9 @@ get '/prev' do
 end
 
 get '/next' do
-  next_r = IO.popen(['mpc', 'next']).read
+  next_r_p = IO.popen(['mpc', 'next'])
+  next_r = next_r_p.read
+  Process.wait(next_r_p.pid)
   puts "::::::::::::::"
   puts next_r
   puts "::::::::::::::"
@@ -51,20 +55,26 @@ end
 
 get '/play' do
   index = params[:index]
-  index_r = IO.popen(['mpc', 'play', index]).read
+  index_r_p = IO.popen(['mpc', 'play', index])
+  index_r = index_r_p.read
+  Process.wait(index_r_p.pid)
   content_type :json
   return {status: "OK"}.to_json
 end
 
 get '/del' do
   index = params[:index]
-  index_r = IO.popen(['mpc', 'del', index]).read
+  index_r_p = IO.popen(['mpc', 'del', index])
+  index_r = index_r_p.read
+  Process.wait(index_r_p.pid)
   content_type :json
   return {status: "OK"}.to_json
 end
 
 get '/playlist' do
-  playlist = IO.popen(['mpc', 'playlist']).read
+  playlist_p = IO.popen(['mpc', 'playlist'])
+  playlist = playlist_p.read
+  Process.wait(playlist_p.pid)
   puts "::::::::::::::"
   puts playlist
   puts "::::::::::::::"
@@ -74,7 +84,9 @@ get '/playlist' do
 end
 
 get '/queued' do
-  queued = IO.popen(['mpc', 'queued']).read
+  queued_p = IO.popen(['mpc', 'queued'])
+  queued = queued_p.read
+  Process.wait(queued_p.pid)
   puts "::::::::::::::"
   puts queued
   puts "::::::::::::::"
@@ -91,9 +103,13 @@ get '/ls' do
   puts ":::::::::::::::::::"
   # ls = IO.popen(['mpc', folder.nil? ? 'ls' : "ls #{folder}"]).read
   if folder.nil?
-    ls = IO.popen(['mpc', 'ls']).read
+    ls_p = IO.popen(['mpc', 'ls'])
+    ls = ls_p.read
+    Process.wait(ls_p.pid)
   else
-    ls = IO.popen(['mpc', "ls", folder]).read
+    ls_p = IO.popen(['mpc', "ls", folder])
+    ls = ls_p.read
+    Process.wait(ls_p.pid)
   end
   puts ls
   puts ls.class
@@ -107,7 +123,9 @@ get '/ls' do
 end
 
 get '/toggle' do
-  ls = IO.popen(['mpc', 'toggle']).read
+  ls_p = IO.popen(['mpc', 'toggle'])
+  ls = ls_p.read
+  Process.wait(ls_p.pid)
   puts ls
   puts ls.class
   print ls
@@ -118,7 +136,9 @@ end
 
 get '/add' do
   file = params[:file]
-  res = IO.popen(['mpc', 'add', file]).read
+  res_p = IO.popen(['mpc', 'add', file])
+  res = res_p.read
+  Process.wait(res_p.pid)
   puts res
   puts res.class
   print res
@@ -129,11 +149,17 @@ end
 
 
 get '/help' do
-  ls = IO.popen(['mpc', 'help']).read
+  ls_p = IO.popen(['mpc', 'help'])
+  ls = ls_p.read
+  Process.wait(ls_p.pid)
   puts ls
   puts ls.class
   print ls
   return ls
+end
+
+get '/qqq' do
+  IO.popen(['sudo', 'shutdown', 'now'])
 end
 
 

@@ -13,8 +13,8 @@ def read_playlist(mpc_data)
     artist, song = filename.split(' - ')
 
     {
-      artist: artist,
-      song: song,
+      artist: artist.strip,
+      song: song.strip,
       filename: filename,
       folders: folders,
       raw: tema,

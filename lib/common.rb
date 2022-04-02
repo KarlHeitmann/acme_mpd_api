@@ -1,14 +1,14 @@
 require 'sinatra/reloader'
 
 def parse_status(mpc_data)
-  puts "!!!!!!!!!!!!!!!!!!!!"
-  puts "!!!!!!!!!!!!!!!!!!!!"
-  puts "!!!!!!!!!!!!!!!!!!!!"
-  puts "!!!!!!!!!!!!!!!!!!!!"
-  puts "!!!!!!!!!!!!!!!!!!!!"
-  puts "!!!!!!!!!!!!!!!!!!!!"
-  puts "!!!!!!!!!!!!!!!!!!!!"
 =begin
+  puts "!!!!!!!!!!!!!!!!!!!!"
+  puts "!!!!!!!!!!!!!!!!!!!!"
+  puts "!!!!!!!!!!!!!!!!!!!!"
+  puts "!!!!!!!!!!!!!!!!!!!!"
+  puts "!!!!!!!!!!!!!!!!!!!!"
+  puts "!!!!!!!!!!!!!!!!!!!!"
+  puts "!!!!!!!!!!!!!!!!!!!!"
 The Cranberries - Promises
 [paused]  #2/4   1:13/5:27 (22%)
 volume: n/a   repeat: off   random: off   single: off   consume: off
@@ -25,8 +25,8 @@ volume: n/a   repeat: off   random: off   single: off   consume: off
 
   volume, repeat, random, single, consume = lineas[2].split("  ").map { |elem| elem.split(":")[1].strip() }
   return {
-    status: status,
-    artist: artist,
+    status: status.strip,
+    artist: artist.strip,
     title: title,
     current_item_playlist: current_item_playlist,
     total_items_playlist: total_items_playlist,
